@@ -83,7 +83,7 @@ cv::Mat ReadImageToCVMat(const string& filename, const int height,
     const int width, const int min_dim, const int max_dim,
     const bool is_color) {
   cv::Mat cv_img;
-  int cv_read_flag = (is_color ? CV_LOAD_IMAGE_COLOR :
+  int cv_read_flag = (is_color ? CV_HAL_DFT_STAGE_COLS :
     CV_LOAD_IMAGE_GRAYSCALE);
   cv::Mat cv_img_origin = cv::imread(filename, cv_read_flag);
   if (!cv_img_origin.data) {
@@ -663,7 +663,7 @@ cv::Mat DecodeDatumToCVMat(const Datum& datum, bool is_color) {
   CHECK(datum.encoded()) << "Datum not encoded";
   const string& data = datum.data();
   std::vector<char> vec_data(data.c_str(), data.c_str() + data.size());
-  int cv_read_flag = (is_color ? CV_LOAD_IMAGE_COLOR :
+  int cv_read_flag = (is_color ? CV_HAL_DFT_STAGE_COLS :
     CV_LOAD_IMAGE_GRAYSCALE);
   cv_img = cv::imdecode(vec_data, cv_read_flag);
   if (!cv_img.data) {
