@@ -8,7 +8,7 @@
 #define cv::COLOR_BGR2YCrCb cv::COLOR_BGR2YCrCb
 #define cv::COLOR_YCrCb2BGR cv::COLOR_YCrCb2BGR
 #define cv::IMWRITE_JPEG_QUALITY cv::IMWRITE_JPEG_QUALITY
-#define CV_HAL_DFT_STAGE_COLS CV_HAL_DFT_STAGE_COLS
+#define cv::IMREAD_COLOR cv::IMREAD_COLOR
 #define cv::THRESH_BINARY_INV cv::THRESH_BINARY_INV
 #define cv::THRESH_OTSU cv::THRESH_OTSU
 #endif
@@ -488,7 +488,7 @@ cv::Mat ApplyNoise(const cv::Mat& in_img, const NoiseParameter& param) {
     params.push_back(cv::IMWRITE_JPEG_QUALITY);
     params.push_back(param.jpeg());
     cv::imencode(".jpg", out_img, buf, params);
-    out_img = cv::imdecode(buf, CV_HAL_DFT_STAGE_COLS);
+    out_img = cv::imdecode(buf, cv::IMREAD_COLOR);
   }
 
   if (param.erode()) {
